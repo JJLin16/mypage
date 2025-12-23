@@ -136,19 +136,40 @@ function animateStars() {
 animateStars();
 
 /* 🔍 Lightbox */
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
+const images = Array.from(document.querySelectorAll(".gallery img"));
+let currentIndex = 0;
 
-document.querySelectorAll(".gallery img").forEach(img => {
+images.forEach((img, index) => {
   img.onclick = () => {
+    currentIndex = index;
     lightboxImg.src = img.src;
     lightbox.style.display = "flex";
   };
 });
 
+function showImage(index) {
+  currentIndex = (index + images.length) % images.length;
+  lightboxImg.src = images[currentIndex].src;
+}
+
 lightbox.onclick = () => {
   lightbox.style.display = "none";
 };
+
+document.addEventListener("keydown", (e) => {
+  if (lightbox.style.display !== "flex") return;
+
+  if (e.key === "Escape") {
+    lightbox.style.display = "none";
+  }
+  if (e.key === "ArrowRight") {
+    showImage(currentIndex + 1);
+  }
+  if (e.key === "ArrowLeft") {
+    showImage(currentIndex - 1);
+  }
+});
+
 </script>
 
 </body>
