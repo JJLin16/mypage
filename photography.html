@@ -76,6 +76,52 @@
     max-height: 90%;
     border-radius: 15px;
   }
+
+  .lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  flex-direction: column;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(56,189,248,0.7);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(56,189,248,1);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.caption {
+  color: #e5e7eb;
+  font-size: 1rem;
+  text-align: center;
+}
+
 </style>
 </head>
 
@@ -99,8 +145,12 @@
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
+  <button class="prev">&larr;</button>
   <img id="lightboxImg">
+  <button class="next">&rarr;</button>
+  <div class="caption" id="caption"></div>
 </div>
+
 
 <script>
 /* ⭐ Stars background */
@@ -137,37 +187,46 @@ animateStars();
 
 /* 🔍 Lightbox */
 const images = Array.from(document.querySelectorAll(".gallery img"));
-let currentIndex = 0;
+const captions = [
+  "Photo 1 caption",
+  "Photo 2 caption",
+  "Photo 3 caption",
+  "Photo 4 caption",
+  "Photo 5 caption"
+]; // Add as many captions as your images
 
-images.forEach((img, index) => {
-  img.onclick = () => {
-    currentIndex = index;
-    lightboxImg.src = img.src;
-    lightbox.style.display = "flex";
-  };
-});
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const captionEl = document.getElementById("caption");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+let currentIndex = 0;
 
 function showImage(index) {
   currentIndex = (index + images.length) % images.length;
   lightboxImg.src = images[currentIndex].src;
+  captionEl.textContent = captions[currentIndex] || "";
 }
 
-lightbox.onclick = () => {
-  lightbox.style.display = "none";
-};
+images.forEach((img, index) => {
+  img.onclick = () => {
+    currentIndex = index;
+    showImage(currentIndex);
+    lightbox.style.display = "flex";
+  };
+});
+
+prevBtn.onclick = (e) => { e.stopPropagation(); showImage(currentIndex - 1); };
+nextBtn.onclick = (e) => { e.stopPropagation(); showImage(currentIndex + 1); };
+
+lightbox.onclick = () => { lightbox.style.display = "none"; };
 
 document.addEventListener("keydown", (e) => {
   if (lightbox.style.display !== "flex") return;
-
-  if (e.key === "Escape") {
-    lightbox.style.display = "none";
-  }
-  if (e.key === "ArrowRight") {
-    showImage(currentIndex + 1);
-  }
-  if (e.key === "ArrowLeft") {
-    showImage(currentIndex - 1);
-  }
+  if (e.key === "Escape") lightbox.style.display = "none";
+  if (e.key === "ArrowRight") showImage(currentIndex + 1);
+  if (e.key === "ArrowLeft") showImage(currentIndex - 1);
 });
 
 </script>
