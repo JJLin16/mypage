@@ -11,7 +11,7 @@ This project uses **HTML, CSS, and JavaScript** to create:
 ---
 
 ## 🚀 Live Demo
-🔗 https://jjlin16.github.io/myportfolio/
+🔗 https://jjlin16.github.io/portfolio/
 
 ---
 
