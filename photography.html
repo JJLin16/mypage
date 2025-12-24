@@ -280,24 +280,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") showImage(currentIndex - 1);
 });
 
-const filterButtons = document.querySelectorAll(".filters button");
-const photos = document.querySelectorAll(".gallery img");
-
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    filterButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    const category = btn.dataset.filter;
-
-    photos.forEach(photo => {
-      photo.style.display =
-        category === "all" || photo.dataset.category === category
-        ? "block"
-        : "none";
-    });
-  });
-});
 
 const filterBtns = document.querySelectorAll(".filter-btn");
 const photos = document.querySelectorAll(".gallery img");
