@@ -143,6 +143,29 @@
   color: #020617;
 }
 
+.filters {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.filter-btn {
+  background: #1e293b;
+  color: #e5e7eb;
+  border: none;
+  padding: 8px 18px;
+  margin: 5px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: #38bdf8;
+  color: #020617;
+}
+
+
 
 </style>
 </head>
@@ -156,10 +179,10 @@
   <a class="back" href="portfolio.html">← Back to Portfolio</a>
 </header>
 <div class="filters">
-  <button data-filter="all" class="active">All</button>
-  <button data-filter="nature">Nature</button>
-  <button data-filter="city">City</button>
-  <button data-filter="night">Night</button>
+  <button class="filter-btn active" data-filter="all" class="active">All</button>
+  <button class="filter-btn" data-filter="nature">Nature</button>
+  <button class="filter-btn" data-filter="city">City</button>
+  <button class="filter-btn" data-filter="night">Night</button>
 </div>
 
 <section class="gallery">
@@ -275,6 +298,27 @@ filterButtons.forEach(btn => {
     });
   });
 });
+
+const filterBtns = document.querySelectorAll(".filter-btn");
+const photos = document.querySelectorAll(".gallery img");
+
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    // active state
+    filterBtns.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filter = btn.dataset.filter;
+
+    photos.forEach(photo => {
+      photo.style.display =
+        filter === "all" || photo.dataset.category === filter
+          ? "block"
+          : "none";
+    });
+  });
+});
+
 
 
 </script>
