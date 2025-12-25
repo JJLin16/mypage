@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Portfolio</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    line-height: 1.6;
+  }
+
+  header {
+    padding: 60px 20px;
+    text-align: center;
+    background: #1e293b;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #60a5fa;
+  }
+
+  section {
+    padding: 60px 10%;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #60a5fa;
+  }
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: #020617;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  }
+
+  .card {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #020617;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .skills span {
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 16px;
+  background: #1e293b;
+  border-radius: 20px;
+}
+
+.timeline {
+  list-style: none;
+  padding-left: 0;
+}
+
+.timeline li {
+  margin-bottom: 10px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: rgba(2,6,23,0.9);
+  padding: 10px;
+  text-align: center;
+  z-index: 5;
+}
+
+.navbar a {
+  color: #e5e7eb;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #38bdf8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s ease;
+}
+
+section {
+  scroll-margin-top: 70px;
+}
+
+#qr {
+  text-align: center;
+}
+
+#qr img {
+  margin-top: 15px;
+  border-radius: 12px;
+  background: white;
+  padding: 10px;
+}
+
+#qr {
+  text-align: center;
+}
+
+#qr-code {
+  display: inline-block;
+  padding: 12px;
+  background: white;
+  border-radius: 16px;
+}
+
+#download-qr {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #38bdf8;
+  color: #020617;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+#download-qr:hover {
+  background-color: #0ea5e9;
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#awards">Awards</a>
+  <a href="#photography">Photography</a>
+</nav>
+
+<header>
+  <h1>Welcome to My Portfolio</h1>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am a passionate student learning web development. I love building creative and interactive websites using HTML, CSS, and JavaScript.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>Project One</h3>
+      <p>A simple website made with HTML & CSS.</p>
+    </div>
+    <div class="card">
+      <h3>Project Two</h3>
+      <p>JavaScript mini game or animation.</p>
+    </div>
+    <div class="card">
+      <h3>Project Three</h3>
+      <p>Responsive portfolio design.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>Photography</span>
+    <span>GitHub</span>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>Timeline</h2>
+  <ul class="timeline">
+    <li><strong>2023</strong> – Started learning web development</li>
+    <li><strong>2024</strong> – Built my first portfolio</li>
+    <li><strong>2025</strong> – Photography & creative projects</li>
+  </ul>
+</section>
+
+<section id="awards">
+  <h2>Awards</h2>
+  <p>• School Photography Award (2024)</p>
+  <p>• Coding Competition Finalist</p>
+</section>
+
+<section id="publications">
+  <h2>Publications</h2>
+  <p>• Personal blog posts on web design</p>
+  <p>• Photo features on school magazine</p>
+</section>
+
+
+<section id="photography">
+  <h2>Photography</h2>
+
+  <div class="projects">
+    <a href="photography" class="card">
+      <h3>Photography Collection</h3>
+      <p>A curated gallery of my photos and visual stories.</p>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: yourname@email.com</p>
+  <p>GitHub: github.com/yourusername</p>
+</section>
+
+<section id="qr">
+  <h2>Scan My Portfolio</h2>
+  <p>Scan the QR code to visit my website</p>
+  <p><button id="download-qr">Download QR Code</button></p>
+  <div id="qr-code"></div>
+</section>
+
+<footer>
+  © 2025 GitHub. All rights reserved.
+</footer>
+<script>
+const canvas = document.getElementById("starsCanvas");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+class Star {
+  constructor() {
+    this.reset();
+  }
+
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 1;
+    this.speed = Math.random() * 0.5 + 0.2;
+    this.opacity = Math.random();
+  }
+
+  draw() {
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  }
+
+  update() {
+    this.y -= this.speed;
+    if (this.y < 0) {
+      this.y = canvas.height;
+      this.x = Math.random() * canvas.width;
+    }
+  }
+}
+
+const stars = [];
+for (let i = 0; i < 150; i++) stars.push(new Star());
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => { s.draw(); s.update(); });
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+const sections = document.querySelectorAll("section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(section => observer.observe(section));
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+
+
+<script>
+const qrCode = new QRCodeStyling({
+  width: 220,
+  height: 220,
+  data: "https://jjlin16.github.io/portfolio/",
+  margin: 5,
+
+  dotsOptions: {
+    color: "#38bdf8",
+    type: "rounded"
+  },
+
+  backgroundOptions: {
+    color: "#ffffff"
+  },
+
+  cornersSquareOptions: {
+    color: "#0f172a",
+    type: "extra-rounded"
+  },
+
+  cornersDotOptions: {
+    color: "#38bdf8"
+  },
+
+  imageOptions: {
+    crossOrigin: "anonymous",
+    margin: 5
+  },
+
+  // Add your logo here
+  image: "images/logo.png"  // <-- path to your logo
+});
+
+qrCode.append(document.getElementById("qr-code"));
+
+const downloadBtn = document.getElementById("download-qr");
+
+downloadBtn.addEventListener("click", () => {
+  qrCode.getRawData("png").then((blob) => {
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "JJLin16_Portfolio_QR.png"; // filename
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+});
+
+</script>
+
+</script>
+
+</body>
+</html>
+
+
