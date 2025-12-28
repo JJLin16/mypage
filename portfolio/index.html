@@ -123,23 +123,49 @@ section {
   scroll-margin-top: 70px;
 }
 
+
 #publications {
   line-height: 1.8;
+  padding: 20px 0;
+}
+
+.publication-list {
+  list-style: decimal;
+  padding-left: 20px;
+}
+
+.publication-list li {
+  margin-bottom: 12px;
+  position: relative;
+  font-size: 1rem;
 }
 
 .goto-link {
-  margin-left: 6px;
+  margin-left: 8px;
   color: #38bdf8;
   text-decoration: none;
   font-weight: 500;
-  padding: 2px 8px;
-  border: 1px solid #38bdf8;
-  border-radius: 6px;
+  position: relative;
+}
+
+/* Hover underline animation */
+.goto-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background-color: #38bdf8;
+  transition: width 0.3s ease;
+}
+
+.goto-link:hover::after {
+  width: 100%;
 }
 
 .goto-link:hover {
   color: #60a5fa;
-  text-decoration: underline;
 }
 
 
@@ -301,7 +327,6 @@ section {
     >
       [Go to ↗]
     </a>
-  <p>• Photo features on school magazine</p>
 </section>
 
 
