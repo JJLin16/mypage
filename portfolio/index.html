@@ -316,10 +316,26 @@ class Star {
   }
 }
 
+function drawVirgo() {
+  // Draw lines
+  ctx.strokeStyle = "#38bdf8";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+
+  virgoLines.forEach(([a, b]) => {
+    ctx.moveTo(virgoStars[a].x, virgoStars[a].y);
+    ctx.lineTo(virgoStars[b].x, virgoStars[b].y);
+  });
+
+  ctx.stroke();
 const stars = [];
 for (let i = 0; i < 150; i++) stars.push(new Star());
 
-
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  stars.forEach(s => { s.draw(); s.update(); });
+  requestAnimationFrame(animate);
+}
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -335,18 +351,7 @@ function animate() {
 
 animate();
 
-function drawVirgo() {
-  // Draw lines
-  ctx.strokeStyle = "#38bdf8";
-  ctx.lineWidth = 1.5;
-  ctx.beginPath();
 
-  virgoLines.forEach(([a, b]) => {
-    ctx.moveTo(virgoStars[a].x, virgoStars[a].y);
-    ctx.lineTo(virgoStars[b].x, virgoStars[b].y);
-  });
-
-  ctx.stroke();
 
   // Draw stars
   virgoStars.forEach(star => {
