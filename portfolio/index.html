@@ -161,6 +161,12 @@ section {
   background-color: #0ea5e9;
 }
 
+#starsCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
 
 
@@ -318,8 +324,47 @@ function animate() {
   stars.forEach(s => { s.draw(); s.update(); });
   requestAnimationFrame(animate);
 }
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  stars.forEach(s => {
+    s.draw();
+    s.update();
+  });
+
+  drawVirgo(); // ⭐ Virgo constellation
+
+  requestAnimationFrame(animate);
+}
 
 animate();
+
+function drawVirgo() {
+  // Draw lines
+  ctx.strokeStyle = "#38bdf8";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+
+  virgoLines.forEach(([a, b]) => {
+    ctx.moveTo(virgoStars[a].x, virgoStars[a].y);
+    ctx.lineTo(virgoStars[b].x, virgoStars[b].y);
+  });
+
+  ctx.stroke();
+
+  // Draw stars
+  virgoStars.forEach(star => {
+    ctx.fillStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, 3, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  // Label
+  ctx.fillStyle = "#e5e7eb";
+  ctx.font = "14px Arial";
+  ctx.fillText("Virgo ♍", virgoStars[0].x + 10, virgoStars[0].y - 10);
+}
 
 const sections = document.querySelectorAll("section");
 
@@ -332,6 +377,25 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 
 sections.forEach(section => observer.observe(section));
+const virgoStars = [
+  { x: 500, y: 200 },  // Spica
+  { x: 450, y: 260 },
+  { x: 420, y: 320 },
+  { x: 470, y: 380 },
+  { x: 540, y: 420 },
+  { x: 610, y: 380 },
+  { x: 650, y: 320 }
+];
+
+const virgoLines = [
+  [0, 1],
+  [1, 2],
+  [2, 3],
+  [3, 4],
+  [4, 5],
+  [5, 6]
+];
+
 
 </script>
 
