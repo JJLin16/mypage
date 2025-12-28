@@ -161,12 +161,6 @@ section {
   background-color: #0ea5e9;
 }
 
-#starsCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
 
 
 
@@ -327,8 +321,6 @@ function animate() {
 
 animate();
 
-
-
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver(entries => {
@@ -340,25 +332,6 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 
 sections.forEach(section => observer.observe(section));
-const virgoStars = [
-  { x: 500, y: 200 },  // Spica
-  { x: 450, y: 260 },
-  { x: 420, y: 320 },
-  { x: 470, y: 380 },
-  { x: 540, y: 420 },
-  { x: 610, y: 380 },
-  { x: 650, y: 320 }
-];
-
-const virgoLines = [
-  [0, 1],
-  [1, 2],
-  [2, 3],
-  [3, 4],
-  [4, 5],
-  [5, 6]
-];
-
 
 </script>
 
